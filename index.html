@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>PADILLA_RadioButtons</title>
+
+<style>
+
+  .checkbox-container {
+
+    display: flex;
+
+    flex-wrap: wrap;
+
+    color: white;
+
+    justify-content: center; 
+
+  }
+
+
+
+  .checkbox-container input[type="checkbox"] {
+
+    margin-right: 20px;
+
+  }
+
+
+
+  #video-background {
+
+    position: fixed;
+
+    top: 0;
+
+    left: 0;
+
+    width: 100%;
+
+    height: 100%;
+
+    z-index: -1;
+
+    object-fit: cover;
+
+  }
+
+
+
+  #content {
+
+    position: absolute;
+
+    top: 50%; 
+
+    left: 50%; 
+
+    transform: translate(-50%, -50%); 
+
+    z-index: 1;
+
+    text-align: center; 
+
+    color: white;
+
+  }
+
+
+
+  
+
+  input[type="radio"] {
+
+    margin: 0 auto;
+
+    display: block;
+
+  }
+
+
+
+
+
+  button {
+
+    display: block;
+
+    margin: 20px auto;
+
+  }
+
+</style>
+
+<script>
+
+  function showDrivers() {
+
+    var team = document.querySelector('input[name="team"]:checked').value;
+
+    var driversDiv = document.getElementById('driversDiv');
+
+    var drivers = '';
+
+
+
+    switch(team) {
+
+      case 'mercedes':
+
+        drivers = '<h2>Mercedes Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Lewis Hamilton</li>' +
+
+             '<li>Valtteri Bottas</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'ferrari':
+
+        drivers = '<h2>Ferrari Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Charles Leclerc</li>' +
+
+             '<li>Carlos Sainz</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'redbull':
+
+        drivers = '<h2>Red Bull Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Max Verstappen</li>' +
+
+             '<li>Sergio Perez</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'mclaren':
+
+        drivers = '<h2>McLaren Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Lando Norris</li>' +
+
+             '<li>Daniel Ricciardo</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'astonmartin':
+
+        drivers = '<h2>Aston Martin Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Lance Stroll</li>' +
+
+             '<li>Sebastian Vettel</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'alphatauri':
+
+        drivers = '<h2>AlphaTauri Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Pierre Gasly</li>' +
+
+             '<li>Yuki Tsunoda</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'alpine':
+
+        drivers = '<h2>Alpine Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Fernando Alonso</li>' +
+
+             '<li>Esteban Ocon</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'haas':
+
+        drivers = '<h2>Haas Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Mick Schumacher</li>' +
+
+             '<li>Nikita Mazepin</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'williams':
+
+        drivers = '<h2>Williams Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Nicholas Latifi</li>' +
+
+             '<li>Jack Aitken</li>' +
+
+             '</ul>';
+
+        break;
+
+      case 'sauber':
+
+        drivers = '<h2>Sauber Racing Drivers:</h2>' +
+
+             '<ul>' +
+
+             '<li>Callum Ilott</li>' +
+
+             '<li>Robert Shwartzman</li>' +
+
+             '</ul>';
+
+        break;
+
+      default:
+
+        drivers = '';
+
+    }
+
+
+
+    driversDiv.innerHTML = drivers;
+
+  }
+
+
+
+  function showSelections() {
+
+    var team = document.querySelector('input[name="team"]:checked').value;
+
+    var selectedDrivers = document.querySelectorAll('.checkbox-container input[type="checkbox"]:checked');
+
+    var selectedDriverNames = [];
+
+
+
+    selectedDrivers.forEach(function(driver) {
+
+      selectedDriverNames.push(driver.nextSibling.textContent.trim());
+
+    });
+
+
+
+    var message = 'Selected Team: ' + team + '\n';
+
+    message += 'Selected Drivers:\n';
+
+    message += selectedDriverNames.join('\n');
+
+
+
+    alert(message);
+
+  }
+
+</script>
+
+</head>
+
+<body>
+
+
+
+  <video autoplay loop muted id="video-background">
+
+    <source src="D:\Game Folder\videoplayback (2).mp4" type="video/mp4">
+
+    Your browser does not support the video tag.
+
+  </video>
+
+
+
+  <div id="content">
+
+    <h2>Select your Favorite Formula One Team:</h2>
+
+    <input type="radio" name="team" value="mercedes" xx="showDrivers()"> Mercedes <br>
+
+    <input type="radio" name="team" value="ferrari" xx="showDrivers()"> Ferrari <br>
+
+    <input type="radio" name="team" value="redbull" xx="showDrivers()"> Red Bull <br>
+
+    <input type="radio" name="team" value="mclaren" xx="showDrivers()"> McLaren <br>
+
+    <input type="radio" name="team" value="astonmartin" xx="showDrivers()"> Aston Martin <br>
+
+    <input type="radio" name="team" value="alphatauri" xx="showDrivers()"> AlphaTauri <br>
+
+    <input type="radio" name="team" value="alpine" xx="showDrivers()"> Alpine <br>
+
+    <input type="radio" name="team" value="haas" xx="showDrivers()"> Haas <br>
+
+    <input type="radio" name="team" value="williams" xx="showDrivers()"> Williams <br>
+
+    <input type="radio" name="team" value="sauber" xx="showDrivers()"> Sauber <br>
+
+
+
+    <div id="driversDiv"></div>
+
+
+
+    <h2>Pick your Favorite Formula One Driver:</h2>
+
+    <div class="checkbox-container">
+
+      <input type="checkbox" id="hamilton"> Lewis Hamilton <br>
+
+      <input type="checkbox" id="schumacher"> Michael Schumacher <br>
+
+      <input type="checkbox" id="senna"> Ayrton Senna <br>
+
+<input type="checkbox" id="senna"> Max Verstappen <br>
+
+      <input type="checkbox" id="prost"> Alain Prost <br>
+
+      <input type="checkbox" id="fangio"> Juan Manuel Fangio <br>
+
+      <input type="checkbox" id="vettel"> Sebastian Vettel <br>
+
+      <input type="checkbox" id="alonso"> Fernando Alonso <br>
+
+      <input type="checkbox" id="stewart"> Jackie Stewart <br>
+
+      <input type="checkbox" id="clark"> Jim Clark <br>
+
+      <input type="checkbox" id="moss"> Stirling Moss <br>
+
+      <input type="checkbox" id="hill"> Graham Hill <br>
+
+      <input type="checkbox" id="prost"> Nelson Piquet <br>
+
+      <input type="checkbox" id="villeneuve"> Gilles Villeneuve <br>
+
+      <input type="checkbox" id="hakkinen"> Mika Häkkinen <br>
+
+      <input type="checkbox" id="button"> Jenson Button <br>
+
+      <input type="checkbox" id="fittipaldi"> Emerson Fittipaldi <br>
+
+      <input type="checkbox" id="hulme"> Denny Hulme <br>
+
+      <input type="checkbox" id="lauda"> Niki Lauda <br>
+
+      <input type="checkbox" id="pironi"> Didier Pironi <br>
+
+    </div>
+
+
+
+    <button xx="showSelections()">Show Selections</button>
+
+  </div>
+
+</body>
+
+</html>
